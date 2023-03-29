@@ -6,7 +6,6 @@ URL
 
 [URL]
 
-
 ## Related Issue
 
 Closes #<ISSUE_NUMBER>
