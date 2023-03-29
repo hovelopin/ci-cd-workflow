@@ -1,6 +1,3 @@
-var: 
-  &url https://example.com
-
 # Repository Actions 탭에 나타날 workflow 이름
 name: jira-auto-testing
 
@@ -14,10 +11,12 @@ on:
 jobs: 
   update-template:
     runs-on: ubuntu-latest
+    env:
+      url: https://example.com
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Update PR template 
         run: |
-          sed -i "s|URL|*url|g" .github/PULL_REQUEST_TEMPLATE.md
+          sed -i "s|URL|$url|g" .github/PULL_REQUEST_TEMPLATE.md
