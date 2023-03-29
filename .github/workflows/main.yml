@@ -19,3 +19,10 @@ jobs:
       - name: Update PR template 
         run: |
           sed "s|URL|$url|g" .github/PULL_REQUEST_TEMPLATE.md
+
+      - name: Replace PR Body
+        uses: ivangabriele/find-and-replace-pull-request-body@v1.0.3
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          find: 'URL'
+          replace: 'https://example.com/my-preview'
