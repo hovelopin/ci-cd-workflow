@@ -18,4 +18,4 @@ jobs:
       - name: Update PR template 
         run: |
           url=https://example.com
-          sed -i "s|<URL>|$url|g" .github/PULL_REQUEST_TEMPLATE.md
+          sed -i "s|<URL>|123123123|g" .github/PULL_REQUEST_TEMPLATE.md
