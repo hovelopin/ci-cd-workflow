@@ -18,4 +18,4 @@ jobs:
 
       - name: Update PR template 
         run: |
-          sed -i "s|<URL>|${{ env.url }}|g" .github/PULL_REQUEST_TEMPLATE.md
+          sed -i "s|URL|${{ env.url }}|g" .github/PULL_REQUEST_TEMPLATE.md
