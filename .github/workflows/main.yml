@@ -14,6 +14,8 @@ on:
 jobs: 
   update-template:
     runs-on: ubuntu-latest
+    env: 
+      url: https://example.com
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
