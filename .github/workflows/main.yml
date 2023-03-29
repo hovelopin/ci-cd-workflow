@@ -2,15 +2,20 @@
 name: jira-auto-testing
 
 # workflow를 실행시키기 위한 Event 목록 
-on: pull_request
+on: 
+  # pull_requset가 열렸거나 다시 열렸을때 워크플로를 실행한다.
+  pull_request:
+    branches: [main]
+    types: [opened, reopened]
 
 jobs: 
   update-template:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Update PR template
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Update PR template 
         run: |
-          sed -i -e 's|<string-to-replace>|[Link Text](URL)|g' .github/PULL_REQUEST_TEMPLATE.md
-        env:
-          URL: https://example.com
+          url=https://example.com
+          sed -i "s|<URL>|$url|g" .github/PULL_REQUEST_TEMPLATE.md
