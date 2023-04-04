@@ -1,24 +1,19 @@
-# Repository Actions 탭에 나타날 workflow 이름
-name: jira-auto-testing
+name: Test Project
 
-# workflow를 실행시키기 위한 Event 목록 
-on: 
-  # pull_requset가 열렸거나 다시 열렸을때 워크플로를 실행한다.
-  pull_request:
-    branches: [main]
-    types: [opened, reopened]
+on: push
 
-jobs: 
-  update-template:
-    runs-on: ubuntu-latest
-    env: 
-      url: https://example.com
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Update PR template 
-        run: |
-          url="https://example.com"
-          sed -i "s|URL|${{ env.url }}|g" .github/PULL_REQUEST_TEMPLATE.md
-
+jobs:
+	test:
+		runs-on: ubuntu-latest
+		steps:
+			- name: Get code
+				uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install dependency
+        # npm install 대신해서 씀
+        run: npm ci
+      - name: Run test
+        run: npm test
