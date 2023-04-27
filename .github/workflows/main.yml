@@ -19,6 +19,9 @@ jobs:
         run: npm test
   # 두번째 Task ( 배포 코드 관련 )
   deploy:
+    # 첫번째 test라는 task가 끝나고 실행한다. => actions에 시각적으로도 연결되어 있다.
+    # 이 작업은 시간이 더 많이 걸린다 기존에는 병렬적으로 실행됐지만 이제는 아니기 때문이다.
+    needs: test
     runs-on: unbuntu-latest
     steps: 
       - name: Get code
