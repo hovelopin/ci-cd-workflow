@@ -1,0 +1,12 @@
+name : Output Information
+
+on : workflow_dispatch 
+
+jobs: 
+  info: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output Github Context
+        # $ 표시와 함께 {{}}를 쓰게 되면 text로 인식하는게 아니라 github의 context를 가져와서 쓸 수 있게 된다.
+        # {{}} 안에는 github에 예약된 key를 사용해야한다. 
+        run: echo "${{ toJSON(github) }}"
