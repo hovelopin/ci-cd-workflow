@@ -1,6 +1,6 @@
 name : Output Information
 
-on : workflow_dispatch 
+on : push 
 
 jobs: 
   info: 
