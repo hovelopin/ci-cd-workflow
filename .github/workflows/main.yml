@@ -14,11 +14,11 @@ jobs:
         with:
           node-version: 16
       - name: Install Dependency
-        uses: npm ci
+        run: npm ci
       - name: execute lint 
-        uses: npm run lint
+        run: npm run lint
       - name: Code Test 
-        uses: npm run test
+        run: npm run test
       - name: deploy
-        uses: npm run build 
+        run: npm run build 
 
