@@ -1,4 +1,4 @@
-name: Main1
+name: Main2
 
 on: push
 
@@ -17,8 +17,29 @@ jobs:
         uses: npm ci
       - name: execute lint 
         uses: npm run lint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Code Test 
         uses: npm run test
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Install node
+        uses: actions/setup-node@v3
+        with: 
+          node-version: 16
+      - name: Install Dependencies
+        uese: npm ci
       - name: deploy
         uses: npm run build 
 
